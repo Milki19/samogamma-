@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Samo gama?</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<link rel="stylesheet" href="main.css">
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Data Visualisation</h1>
+  <p>Because everything is more fun when you introduce statistics!</p> 
+</div>
+
+<div class="chart-buttons">
+  <button id="chart1-button">Chart 1</button>
+  <button id="chart2-button">Chart 2</button>
+  <button id="chart3-button">Chart 3</button>
+</div>
+<canvas id="student-chart" width="400" height="200"></canvas>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div>
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="row">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="row">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+<script>
+  // Funkcija za prikaz grafikona na klik dugmeta
+  function showChart(chartData) {
+      const labels = chartData.map(item => item.Course);
+      const scores = chartData.map(item => item['total_points_scored']);
+      const ctx = document.getElementById('student-chart').getContext('2d');
+      
+      // Kreirajte novi grafikon koristeći Chart.js
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: 'Total Points Scored',
+                  data: scores,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  }
+
+  // Dodajte event listenere za svako dugme
+  document.getElementById('chart1-button').addEventListener('click', function () {
+      // Učitajte podatke za Chart 1 pre nego što prikažete grafikon
+      fetch('/api/chart1-data')
+          .then(response => response.json())
+          .then(data => {
+              showChart(data);
+          });
+  });
+
+  document.getElementById('chart2-button').addEventListener('click', function () {
+      // Učitajte podatke za Chart 2 pre nego što prikažete grafikon
+      fetch('/api/chart2-data')
+          .then(response => response.json())
+          .then(data => {
+              showChart(data);
+          });
+  });
+
+  document.getElementById('chart3-button').addEventListener('click', function () {
+      // Učitajte podatke za Chart 3 pre nego što prikažete grafikon
+      fetch('/api/chart3-data')
+          .then(response => response.json())
+          .then(data => {
+              showChart(data);
+          });
+  });
+</script>
+
+</body>
+</html>
