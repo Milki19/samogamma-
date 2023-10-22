@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Učitajte CSV datoteku sa eksplicitno definisanim tipovima podataka
-data = pd.read_csv("metropoliten.csv", encoding='utf-8', low_memory=False, dtype={
+data = pd.read_csv("samogamma-/metropoliten.csv", encoding='utf-8', low_memory=False, dtype={
     'actor.id': str,
     'Course': str,
     'result.score.scaled': float,

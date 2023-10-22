@@ -1,8 +1,52 @@
-div.container-fluid {
-    background-color: chocolate;
+body{ 
+    background-color: #A70532;
+    color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{ 
-    background-color: #f5d9d9;
-  }
-  
+nav{
+    background-color: white;
+    color: #A70532;
+    font-family: 'Sometype Mono', monospace;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.nav-ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left-nav{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right-nav{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-item{
+    display: inline;
+}
+
+.nav-btn{
+    font-size: 20px;
+    font-weight: 800;
+    color: #A70532;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+.logo{
+    object-fit: cover;
+}
+ 
+h1{
+    font-size: 30px;
+    font-weight: 900;
+}
